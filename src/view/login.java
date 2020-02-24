@@ -3,8 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
- package view;
- import com.placeholder.PlaceHolder;
+package view;
+import com.placeholder.PlaceHolder;
+import com.sun.glass.events.KeyEvent;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import jtextfieldround.BorderLineRound;
+import jtextfieldround.JPasswordFieldRound;
 
 /**
  *
@@ -18,7 +24,16 @@ public class login extends javax.swing.JFrame {
     public login() {
         initComponents();
         PlaceHolder placeHolderLogin = new PlaceHolder(loginTXT, "Aqui vai seu nome de usuário :D");
-        PlaceHolder placeHolderPassword = new PlaceHolder(passwordTXT, "E aqui shhh....");
+        PlaceHolder placeHolderPassword = new PlaceHolder(passwordTXT, "Sua senha shh..");
+        
+        loginTXT.setBorder(new BorderLineRound(Color.GRAY, true)); 
+        loginTXT.setFont(new Font("Century Gothic", 0, 12)); 
+        loginTXT.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        passwordTXT.setEchoChar('°');
+        passwordTXT.setBorder(new BorderLineRound(Color.GRAY, true)); 
+        passwordTXT.setFont(new Font("Helvetica", Font.PLAIN, 12)); 
+        passwordTXT.setHorizontalAlignment(SwingConstants.CENTER);
        }
 
     /**
@@ -33,12 +48,16 @@ public class login extends javax.swing.JFrame {
         loginPNL = new javax.swing.JPanel();
         loginTXT = new javax.swing.JTextField();
         passwordTXT = new javax.swing.JPasswordField();
-        loginBTN = new javax.swing.JButton();
         iconIMG = new javax.swing.JLabel();
+        showMenuTXT = new javax.swing.JLabel();
+        loginBTN = new javax.swing.JButton();
+        registerTXT = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
-        loginTXT.setToolTipText("seu login");
+        loginTXT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         loginTXT.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         loginTXT.setSelectionColor(new java.awt.Color(172, 211, 201));
         loginTXT.addActionListener(new java.awt.event.ActionListener() {
@@ -50,6 +69,50 @@ public class login extends javax.swing.JFrame {
         passwordTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordTXTActionPerformed(evt);
+            }
+        });
+        passwordTXT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordTXTKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout loginPNLLayout = new javax.swing.GroupLayout(loginPNL);
+        loginPNL.setLayout(loginPNLLayout);
+        loginPNLLayout.setHorizontalGroup(
+            loginPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPNLLayout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addGroup(loginPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(loginTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                    .addComponent(passwordTXT))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        loginPNLLayout.setVerticalGroup(
+            loginPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPNLLayout.createSequentialGroup()
+                .addComponent(loginTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(passwordTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        iconIMG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/breakfest128.png"))); // NOI18N
+
+        showMenuTXT.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        showMenuTXT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        showMenuTXT.setText("Ver cardápio");
+        showMenuTXT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        showMenuTXT.setOpaque(true);
+        showMenuTXT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showMenuTXTMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                showMenuTXTMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                showMenuTXTMouseExited(evt);
             }
         });
 
@@ -65,34 +128,19 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout loginPNLLayout = new javax.swing.GroupLayout(loginPNL);
-        loginPNL.setLayout(loginPNLLayout);
-        loginPNLLayout.setHorizontalGroup(
-            loginPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPNLLayout.createSequentialGroup()
-                .addGroup(loginPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(loginPNLLayout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addGroup(loginPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwordTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(loginTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(loginPNLLayout.createSequentialGroup()
-                        .addGap(219, 219, 219)
-                        .addComponent(loginBTN)))
-                .addGap(0, 165, Short.MAX_VALUE))
-        );
-        loginPNLLayout.setVerticalGroup(
-            loginPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPNLLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(loginTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(passwordTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(loginBTN))
-        );
-
-        iconIMG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/breakfest128.png"))); // NOI18N
+        registerTXT.setText("Não tem uma conta? Crie aqui");
+        registerTXT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registerTXT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerTXTMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registerTXTMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registerTXTMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,23 +149,41 @@ public class login extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(loginPNL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(79, 79, 79))
             .addGroup(layout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addComponent(iconIMG)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(registerTXT)
+                        .addGap(45, 45, 45)
+                        .addComponent(loginBTN))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(iconIMG)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(showMenuTXT)))))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(31, 31, 31)
                 .addComponent(iconIMG)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(showMenuTXT)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(loginPNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(loginBTN)
+                    .addComponent(registerTXT))
+                .addGap(39, 39, 39))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
      
     private void loginBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBTNActionPerformed
@@ -133,19 +199,60 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordTXTActionPerformed
     private boolean verifyLogin(String login,String password, String value){
         return login.equals(value) && password.equals(value);
-    }   
-    private void loginBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBTNMouseClicked
+    }
+    private void selectScreen(){
         if(this.verifyLogin(loginTXT.getText(), new String(passwordTXT.getPassword()), "admin")){
-            managerAcount screenManager = new managerAcount();
+            managerAccount screenManager = new managerAccount();
             screenManager.setVisible(true);
+            this.dispose();
         }else if(this.verifyLogin(loginTXT.getText(), new String(passwordTXT.getPassword()), "user")){
             usersAcount screenUser = new usersAcount();
             screenUser.setVisible(true);
+            this.dispose();
         }else if(this.verifyLogin(loginTXT.getText(), new String(passwordTXT.getPassword()), "kitchen")){
             kitchenAcount screenKitchen = new kitchenAcount();
             screenKitchen.setVisible(true);
+            this.dispose();
         }
+    }
+    private void loginBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBTNMouseClicked
+        selectScreen();
     }//GEN-LAST:event_loginBTNMouseClicked
+
+    private void showMenuTXTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMenuTXTMouseClicked
+        menu menuScreen = new menu();
+        menuScreen.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_showMenuTXTMouseClicked
+
+    private void showMenuTXTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMenuTXTMouseEntered
+        showMenuTXT.setForeground(Color.decode("11326409"));
+    }//GEN-LAST:event_showMenuTXTMouseEntered
+
+    private void showMenuTXTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMenuTXTMouseExited
+        showMenuTXT.setForeground(Color.black);
+    }//GEN-LAST:event_showMenuTXTMouseExited
+
+    private void passwordTXTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTXTKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            selectScreen();
+        }
+        
+    }//GEN-LAST:event_passwordTXTKeyPressed
+
+    private void registerTXTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerTXTMouseClicked
+        register registerScreen = new register();
+        registerScreen.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_registerTXTMouseClicked
+
+    private void registerTXTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerTXTMouseEntered
+        registerTXT.setForeground(Color.decode("11326409"));
+    }//GEN-LAST:event_registerTXTMouseEntered
+
+    private void registerTXTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerTXTMouseExited
+        registerTXT.setForeground(Color.black);
+    }//GEN-LAST:event_registerTXTMouseExited
 
     /**
      * @param args the command line arguments
@@ -163,22 +270,16 @@ public class login extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new login().setVisible(true);
         });
     }
 
@@ -188,5 +289,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPanel loginPNL;
     private javax.swing.JTextField loginTXT;
     private javax.swing.JPasswordField passwordTXT;
+    private javax.swing.JLabel registerTXT;
+    private javax.swing.JLabel showMenuTXT;
     // End of variables declaration//GEN-END:variables
 }
