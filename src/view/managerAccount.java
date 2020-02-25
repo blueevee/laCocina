@@ -33,9 +33,9 @@ public class managerAccount extends javax.swing.JFrame {
         managerBackBTN = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         productsTBL = new javax.swing.JTable();
-        jScrollBar1 = new javax.swing.JScrollBar();
         jMenuBar1 = new javax.swing.JMenuBar();
         registerItensMENU = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("La Cocina");
@@ -81,6 +81,14 @@ public class managerAccount extends javax.swing.JFrame {
         });
         jMenuBar1.add(registerItensMENU);
 
+        jMenu1.setText("Funcionários");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -94,8 +102,7 @@ public class managerAccount extends javax.swing.JFrame {
                         .addComponent(managerBackBTN)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,9 +110,8 @@ public class managerAccount extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(managerBackBTN)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(293, Short.MAX_VALUE))
-            .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -123,6 +129,12 @@ public class managerAccount extends javax.swing.JFrame {
        registerProducts registerProductsScreen = new registerProducts();
        registerProductsScreen.setVisible(true); 
     }//GEN-LAST:event_registerItensMENUMouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+       this.dispose();
+       manageEmployees manageEmployeesScreen = new manageEmployees();
+       manageEmployeesScreen.setVisible(true); 
+    }//GEN-LAST:event_jMenu1MouseClicked
     private void loadTable(){
         
         DefaultTableModel model = (DefaultTableModel) productsTBL.getModel();
@@ -136,6 +148,11 @@ public class managerAccount extends javax.swing.JFrame {
         productsTBL.getColumnModel().getColumn(5).setPreferredWidth(20);
         
 //        pegar do bd e preencher as linhas
+        model.addRow(new Object[]{
+            
+            
+        });
+        
     }
     
     /**
@@ -168,8 +185,8 @@ public class managerAccount extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton managerBackBTN;
     private javax.swing.JTable productsTBL;

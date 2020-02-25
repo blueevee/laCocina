@@ -28,9 +28,10 @@ public class usersAcount extends javax.swing.JFrame {
     private void initComponents() {
 
         userBackBTN = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         userMENU = new javax.swing.JMenuBar();
-        menuMENU = new javax.swing.JMenu();
-        myOrdersMENU = new javax.swing.JMenu();
+        cartMENU = new javax.swing.JMenu();
+        editProfileMENU = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,11 +42,23 @@ public class usersAcount extends javax.swing.JFrame {
             }
         });
 
-        menuMENU.setText("Cardápio");
-        userMENU.add(menuMENU);
+        jLabel1.setText("AQUI VAI O CARDÁPIO");
 
-        myOrdersMENU.setText("Meus pedidos");
-        userMENU.add(myOrdersMENU);
+        cartMENU.setText("Carrinho");
+        cartMENU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cartMENUMouseClicked(evt);
+            }
+        });
+        userMENU.add(cartMENU);
+
+        editProfileMENU.setText("Editar Perfil");
+        editProfileMENU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editProfileMENUMouseClicked(evt);
+            }
+        });
+        userMENU.add(editProfileMENU);
 
         setJMenuBar(userMENU);
 
@@ -54,16 +67,23 @@ public class usersAcount extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(userBackBTN)
-                .addContainerGap(453, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(userBackBTN))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(186, 186, 186)
+                        .addComponent(jLabel1)))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(userBackBTN)
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addGap(107, 107, 107)
+                .addComponent(jLabel1)
+                .addContainerGap(322, Short.MAX_VALUE))
         );
 
         pack();
@@ -75,6 +95,18 @@ public class usersAcount extends javax.swing.JFrame {
         login loginScreen = new login();
         loginScreen.setVisible(true);
     }//GEN-LAST:event_userBackBTNMouseClicked
+
+    private void editProfileMENUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileMENUMouseClicked
+        this.dispose();
+        editClientProfile editClientProfileScreen = new editClientProfile();
+        editClientProfileScreen.setVisible(true);
+    }//GEN-LAST:event_editProfileMENUMouseClicked
+
+    private void cartMENUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartMENUMouseClicked
+        this.dispose();
+        cart cartScreen = new cart();
+        cartScreen.setVisible(true);
+    }//GEN-LAST:event_cartMENUMouseClicked
 
     /**
      * @param args the command line arguments
@@ -112,8 +144,9 @@ public class usersAcount extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu menuMENU;
-    private javax.swing.JMenu myOrdersMENU;
+    private javax.swing.JMenu cartMENU;
+    private javax.swing.JMenu editProfileMENU;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton userBackBTN;
     private javax.swing.JMenuBar userMENU;
     // End of variables declaration//GEN-END:variables

@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Blueevee
@@ -28,6 +30,8 @@ public class kitchenAcount extends javax.swing.JFrame {
     private void initComponents() {
 
         kitchenBackBTN = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        kitchenTBL = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,6 +42,16 @@ public class kitchenAcount extends javax.swing.JFrame {
             }
         });
 
+        kitchenTBL.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "MESA", "QUANTIDADE", "PEDIDO"
+            }
+        ));
+        jScrollPane1.setViewportView(kitchenTBL);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -45,14 +59,20 @@ public class kitchenAcount extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(kitchenBackBTN)
-                .addContainerGap(453, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(kitchenBackBTN)
-                .addContainerGap(464, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -64,7 +84,23 @@ public class kitchenAcount extends javax.swing.JFrame {
         login loginScreen = new login();
         loginScreen.setVisible(true);
     }//GEN-LAST:event_kitchenBackBTNMouseClicked
+    private void loadTable(){
+        
+        DefaultTableModel model = (DefaultTableModel) kitchenTBL.getModel();
+        model.setNumRows(0);
+        
+        kitchenTBL.getColumnModel().getColumn(0).setPreferredWidth(5);
+        kitchenTBL.getColumnModel().getColumn(1).setPreferredWidth(5);
+        kitchenTBL.getColumnModel().getColumn(2).setPreferredWidth(80);
+         
+//        pegar do bd e preencher as linhas
+        model.addRow(new Object[]{
+            
+            
+        });
 
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -93,14 +129,18 @@ public class kitchenAcount extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new kitchenAcount().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new kitchenAcount().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton kitchenBackBTN;
+    private javax.swing.JTable kitchenTBL;
     // End of variables declaration//GEN-END:variables
+
+    private Object one(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
