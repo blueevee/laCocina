@@ -8,40 +8,56 @@ package view;
 import com.placeholder.PlaceHolder;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
-import jtextfieldround.BorderLineRound;
 
 /**
  *
  * @author evelyn.ferreira
  */
-public class registerProducts extends javax.swing.JFrame {
+public class RegisterProducts extends javax.swing.JFrame {
 
     /**
      * Creates new form registerProducts
      */
-    public registerProducts() {
+    public RegisterProducts() {
         initComponents();
+        this.getContentPane().setBackground(Color.decode("14027569"));
+        productDrinkRBTN.setSelected(true);
         
-        PlaceHolder placeHolderName = new PlaceHolder(productNameTXT, "Qual o nome do produto?");
-        PlaceHolder placeHolderPrice = new PlaceHolder(productPriceTXT, "   Preço");
-        PlaceHolder placeHolderProvider = new PlaceHolder(drinkProviderTXT, "Fornecedor");
-        PlaceHolder placeHolderDescription = new PlaceHolder(foodDescriptionTXT, "Descrição do item");
+        PlaceHolder placeHolderName = new PlaceHolder(productNameTXT, Color.white, Color.white, "Qual o nome do produto?", false, "Verdana", 14);
+        PlaceHolder placeHolderPrice = new PlaceHolder(productPriceTXT, Color.white, Color.white, "Preço", false, "Verdana", 14);
+        PlaceHolder placeHolderProvider = new PlaceHolder(drinkProviderTXT, Color.white, Color.white, "Fornecedor", false, "Verdana", 14);
+        PlaceHolder placeHolderDescription = new PlaceHolder(foodDescriptionTXT, Color.white, Color.white, "Descrição do item", false, "Verdana", 14);
         
-        productNameTXT.setBorder(new BorderLineRound(Color.GRAY, true)); 
-        productNameTXT.setFont(new Font("Century Gothic", 0, 12)); 
+        productNameTXT.setFont(new Font("Verdana", 0, 14)); 
         productNameTXT.setHorizontalAlignment(SwingConstants.CENTER);
+        productNameTXT.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.white));
+        productNameTXT.setBackground(Color.decode("14027569"));
+        productNameTXT.setForeground(Color.white);
+        productNameTXT.setCaretColor(Color.white);
         
-        productPriceTXT.setBorder(new BorderLineRound(Color.GRAY, true));
-        productPriceTXT.setFont(new Font("Century Gothic", 0, 12)); 
+        productPriceTXT.setFont(new Font("Verdana", 0, 14)); 
         productPriceTXT.setHorizontalAlignment(SwingConstants.CENTER);
+        productPriceTXT.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.white));
+        productPriceTXT.setBackground(Color.decode("14027569"));
+        productPriceTXT.setForeground(Color.white);
+        productPriceTXT.setCaretColor(Color.white);
         
-        drinkProviderTXT.setBorder(new BorderLineRound(Color.GRAY, true));
-        drinkProviderTXT.setFont(new Font("Century Gothic", 0, 12)); 
+        drinkProviderTXT.setFont(new Font("Verdana", 0, 14)); 
         drinkProviderTXT.setHorizontalAlignment(SwingConstants.CENTER);
+        drinkProviderTXT.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.white));
+        drinkProviderTXT.setBackground(Color.decode("14027569"));
+        drinkProviderTXT.setForeground(Color.white);
+        drinkProviderTXT.setCaretColor(Color.white);
         
-        foodDescriptionTXT.setVisible(false);
-        
+        foodDescriptionTXT.setFont(new Font("Verdana", 0, 14)); 
+        foodDescriptionTXT.setHorizontalAlignment(SwingConstants.CENTER);
+        foodDescriptionTXT.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.white));
+        foodDescriptionTXT.setBackground(Color.decode("14027569"));
+        foodDescriptionTXT.setForeground(Color.white);
+        foodDescriptionTXT.setCaretColor(Color.white);
+                
         emptyDataLBL.setVisible(false);
         emptyData2LBL.setVisible(false);
         
@@ -64,15 +80,16 @@ public class registerProducts extends javax.swing.JFrame {
         productFoodRBTN = new javax.swing.JRadioButton();
         productDrinkRBTN = new javax.swing.JRadioButton();
         drinkProviderTXT = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        foodDescriptionTXT = new javax.swing.JTextArea();
         productPriceTXT = new javax.swing.JTextField();
         emptyDataLBL = new javax.swing.JLabel();
         emptyData2LBL = new javax.swing.JLabel();
+        foodDescriptionTXT = new javax.swing.JTextField();
+        emptyData2LBL1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        productsBackBTN.setBackground(new java.awt.Color(38, 70, 27));
         productsBackBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/back16.png"))); // NOI18N
         productsBackBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,6 +97,10 @@ public class registerProducts extends javax.swing.JFrame {
             }
         });
 
+        registerProductsPNL.setOpaque(false);
+
+        Cadastrar.setBackground(new java.awt.Color(38, 70, 27));
+        Cadastrar.setForeground(new java.awt.Color(255, 255, 255));
         Cadastrar.setText("Cadastrar");
         Cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -87,8 +108,22 @@ public class registerProducts extends javax.swing.JFrame {
             }
         });
 
+        productNameTXT.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        productNameTXT.setSelectionColor(new java.awt.Color(214, 11, 49));
+        productNameTXT.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                productNameTXTFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                productNameTXTFocusLost(evt);
+            }
+        });
+
         choicefoodGRP.add(productFoodRBTN);
+        productFoodRBTN.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        productFoodRBTN.setForeground(new java.awt.Color(255, 255, 255));
         productFoodRBTN.setText("Comida");
+        productFoodRBTN.setOpaque(false);
         productFoodRBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 productFoodRBTNMouseClicked(evt);
@@ -96,49 +131,89 @@ public class registerProducts extends javax.swing.JFrame {
         });
 
         choicefoodGRP.add(productDrinkRBTN);
+        productDrinkRBTN.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        productDrinkRBTN.setForeground(new java.awt.Color(255, 255, 255));
         productDrinkRBTN.setText("Bebida");
+        productDrinkRBTN.setOpaque(false);
         productDrinkRBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 productDrinkRBTNMouseClicked(evt);
             }
         });
 
-        foodDescriptionTXT.setColumns(20);
-        foodDescriptionTXT.setRows(5);
-        jScrollPane1.setViewportView(foodDescriptionTXT);
+        drinkProviderTXT.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        drinkProviderTXT.setSelectionColor(new java.awt.Color(214, 11, 49));
+        drinkProviderTXT.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                drinkProviderTXTFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                drinkProviderTXTFocusLost(evt);
+            }
+        });
 
-        emptyDataLBL.setForeground(new java.awt.Color(255, 102, 102));
+        productPriceTXT.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        productPriceTXT.setSelectionColor(new java.awt.Color(214, 11, 49));
+        productPriceTXT.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                productPriceTXTFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                productPriceTXTFocusLost(evt);
+            }
+        });
+
+        emptyDataLBL.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        emptyDataLBL.setForeground(new java.awt.Color(255, 255, 255));
         emptyDataLBL.setText("* Todos os campos devem");
 
-        emptyData2LBL.setForeground(new java.awt.Color(255, 102, 102));
+        emptyData2LBL.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        emptyData2LBL.setForeground(new java.awt.Color(255, 255, 255));
         emptyData2LBL.setText("ser preenchidos");
+
+        foodDescriptionTXT.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        foodDescriptionTXT.setSelectionColor(new java.awt.Color(214, 11, 49));
+        foodDescriptionTXT.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                foodDescriptionTXTFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                foodDescriptionTXTFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout registerProductsPNLLayout = new javax.swing.GroupLayout(registerProductsPNL);
         registerProductsPNL.setLayout(registerProductsPNLLayout);
         registerProductsPNLLayout.setHorizontalGroup(
             registerProductsPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registerProductsPNLLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
                 .addGroup(registerProductsPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(drinkProviderTXT)
-                    .addComponent(productNameTXT)
                     .addGroup(registerProductsPNLLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(productFoodRBTN)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(productDrinkRBTN)))
+                        .addGap(86, 86, 86)
+                        .addComponent(productDrinkRBTN))
+                    .addComponent(drinkProviderTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                    .addComponent(productNameTXT)
+                    .addComponent(foodDescriptionTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
                 .addGroup(registerProductsPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(registerProductsPNLLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+                        .addGap(0, 34, Short.MAX_VALUE)
                         .addGroup(registerProductsPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(registerProductsPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(productPriceTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(emptyDataLBL)))
-                    .addGroup(registerProductsPNLLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(emptyData2LBL)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                            .addGroup(registerProductsPNLLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(productPriceTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(registerProductsPNLLayout.createSequentialGroup()
+                                .addGroup(registerProductsPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(registerProductsPNLLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(emptyData2LBL))
+                                    .addComponent(emptyDataLBL))
+                                .addGap(0, 9, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerProductsPNLLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         registerProductsPNLLayout.setVerticalGroup(
             registerProductsPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,22 +222,30 @@ public class registerProducts extends javax.swing.JFrame {
                 .addGroup(registerProductsPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(productNameTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(productPriceTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(37, 37, 37)
                 .addGroup(registerProductsPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(productFoodRBTN)
-                    .addComponent(productDrinkRBTN)
-                    .addComponent(emptyDataLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(emptyData2LBL, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(productDrinkRBTN))
+                .addGap(18, 18, 18)
                 .addGroup(registerProductsPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerProductsPNLLayout.createSequentialGroup()
+                    .addGroup(registerProductsPNLLayout.createSequentialGroup()
+                        .addComponent(emptyDataLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(emptyData2LBL, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(Cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(registerProductsPNLLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(drinkProviderTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Cadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addGap(34, 34, 34)
+                        .addComponent(foodDescriptionTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(109, 109, 109))))
         );
+
+        emptyData2LBL1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        emptyData2LBL1.setForeground(new java.awt.Color(255, 255, 255));
+        emptyData2LBL1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,21 +253,29 @@ public class registerProducts extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(registerProductsPNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(productsBackBTN))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(productsBackBTN)
+                .addGap(75, 75, 75)
+                .addComponent(emptyData2LBL1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(registerProductsPNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(productsBackBTN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(registerProductsPNL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(productsBackBTN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(emptyData2LBL1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(registerProductsPNL, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -193,7 +284,7 @@ public class registerProducts extends javax.swing.JFrame {
 
     private void productsBackBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productsBackBTNMouseClicked
         this.dispose();
-        managerAccount managerScreen = new managerAccount();
+        ManagerAccount managerScreen = new ManagerAccount();
         managerScreen.setVisible(true);
     }//GEN-LAST:event_productsBackBTNMouseClicked
 
@@ -216,8 +307,47 @@ public class registerProducts extends javax.swing.JFrame {
             emptyDataLBL.setVisible(true);
             emptyData2LBL.setVisible(true);
         }
+        
+        //Se rolou tuto certo
+        Success successDialog = new Success(this , true);
+        successDialog.setVisible(true);
+// SE não
+        Error errorDialog = new Error(this , true);
+        errorDialog.setVisible(true);
                
     }//GEN-LAST:event_CadastrarMouseClicked
+
+    private void productNameTXTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_productNameTXTFocusGained
+        productNameTXT.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode("6554655")));
+    }//GEN-LAST:event_productNameTXTFocusGained
+
+    private void productNameTXTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_productNameTXTFocusLost
+        productNameTXT.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.white));
+    }//GEN-LAST:event_productNameTXTFocusLost
+
+    private void productPriceTXTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_productPriceTXTFocusGained
+        productNameTXT.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode("6554655")));
+    }//GEN-LAST:event_productPriceTXTFocusGained
+
+    private void productPriceTXTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_productPriceTXTFocusLost
+        productNameTXT.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.white));
+    }//GEN-LAST:event_productPriceTXTFocusLost
+
+    private void drinkProviderTXTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_drinkProviderTXTFocusGained
+        productNameTXT.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode("6554655")));
+    }//GEN-LAST:event_drinkProviderTXTFocusGained
+
+    private void drinkProviderTXTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_drinkProviderTXTFocusLost
+        productNameTXT.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.white));
+    }//GEN-LAST:event_drinkProviderTXTFocusLost
+
+    private void foodDescriptionTXTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_foodDescriptionTXTFocusGained
+        productNameTXT.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode("6554655")));
+    }//GEN-LAST:event_foodDescriptionTXTFocusGained
+
+    private void foodDescriptionTXTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_foodDescriptionTXTFocusLost
+        productNameTXT.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.white));
+    }//GEN-LAST:event_foodDescriptionTXTFocusLost
 
     /**
      * @param args the command line arguments
@@ -236,15 +366,16 @@ public class registerProducts extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(registerProducts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterProducts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
         
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new registerProducts().setVisible(true);
+            new RegisterProducts().setVisible(true);
         });
     }
 
@@ -253,9 +384,9 @@ public class registerProducts extends javax.swing.JFrame {
     private javax.swing.ButtonGroup choicefoodGRP;
     private javax.swing.JTextField drinkProviderTXT;
     private javax.swing.JLabel emptyData2LBL;
+    private javax.swing.JLabel emptyData2LBL1;
     private javax.swing.JLabel emptyDataLBL;
-    private javax.swing.JTextArea foodDescriptionTXT;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField foodDescriptionTXT;
     private javax.swing.JRadioButton productDrinkRBTN;
     private javax.swing.JRadioButton productFoodRBTN;
     private javax.swing.JTextField productNameTXT;

@@ -5,18 +5,27 @@
  */
 package view;
 
+import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author evelyn.ferreira
  */
-public class menu extends javax.swing.JFrame {
-
+public class Menu extends javax.swing.JFrame {
+    DefaultComboBoxModel  modelCBOX = new DefaultComboBoxModel();
     /**
      * Creates new form menu
      */
-    public menu() {
+    public Menu() {
         initComponents();
-    }
+        this.getContentPane().setBackground(Color.decode("14027569"));
+        foodTypeCBOX.setModel(modelCBOX);
+        addItem();
+        foodTypeCBOX.setBackground(Color.decode("2508315"));
+        foodTypeCBOX.setForeground(Color.white);
+                
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,11 +36,29 @@ public class menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         menuBackBTN = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        menuTBL = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        cashbackTXT = new javax.swing.JLabel();
+        valueCashbackTXT = new javax.swing.JLabel();
+        foodTypeCBOX = new javax.swing.JComboBox<>();
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu La Cocina Bistrô");
 
+        menuBackBTN.setBackground(new java.awt.Color(38, 70, 27));
+        menuBackBTN.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         menuBackBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/back16.png"))); // NOI18N
         menuBackBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -39,15 +66,99 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setOpaque(false);
+
+        menuTBL.setAutoCreateRowSorter(true);
+        menuTBL.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        menuTBL.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"10", "batata", "2,30"},
+                {"12", "peixe", "1"},
+                {"11", "euuu", "6,80"},
+                {"20", "feijã0", "20"},
+                {"27", "arroz", null}
+            },
+            new String [] {
+                "Código", "Prato", "Preço"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        menuTBL.getTableHeader().setReorderingAllowed(false);
+        menuTBL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuTBLMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(menuTBL);
+        if (menuTBL.getColumnModel().getColumnCount() > 0) {
+            menuTBL.getColumnModel().getColumn(0).setPreferredWidth(2);
+            menuTBL.getColumnModel().getColumn(1).setPreferredWidth(96);
+            menuTBL.getColumnModel().getColumn(2).setPreferredWidth(2);
+        }
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo.png"))); // NOI18N
+
+        cashbackTXT.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cashbackTXT.setForeground(new java.awt.Color(255, 255, 255));
+        cashbackTXT.setText("Cashback:");
+
+        valueCashbackTXT.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        valueCashbackTXT.setForeground(new java.awt.Color(255, 255, 255));
+        valueCashbackTXT.setText("value");
+
+        foodTypeCBOX.setBackground(new java.awt.Color(38, 70, 27));
+        foodTypeCBOX.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        foodTypeCBOX.setForeground(new java.awt.Color(255, 255, 255));
+        foodTypeCBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        foodTypeCBOX.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                foodTypeCBOXMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(cashbackTXT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(valueCashbackTXT))
+                    .addComponent(foodTypeCBOX, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cashbackTXT)
+                            .addComponent(valueCashbackTXT))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(foodTypeCBOX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -59,19 +170,17 @@ public class menu extends javax.swing.JFrame {
                 .addComponent(menuBackBTN)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(menuBackBTN))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(menuBackBTN)
+                .addContainerGap(534, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -80,10 +189,62 @@ public class menu extends javax.swing.JFrame {
 
     private void menuBackBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBackBTNMouseClicked
         this.dispose();
-        login loginScreen = new login();
+        Login loginScreen = new Login();
         loginScreen.setVisible(true);
     }//GEN-LAST:event_menuBackBTNMouseClicked
 
+    private void menuTBLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTBLMouseClicked
+//        Menu item = new Menu();
+//        MenuDAO dao = new MenuDao();
+         
+        int index = menuTBL.getSelectedRow();
+        if(index > -1){
+            this.dispose();
+            ItemDetailed itemScreen = new ItemDetailed();
+            itemScreen.setVisible(true);
+            
+//            item = dao.Listar().get(index);
+        }
+        
+    }//GEN-LAST:event_menuTBLMouseClicked
+
+    private void foodTypeCBOXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foodTypeCBOXMouseClicked
+        String type = (String) foodTypeCBOX.getSelectedItem();
+        
+            ///Trazer todos que tenham Type
+            loadTable();
+    }//GEN-LAST:event_foodTypeCBOXMouseClicked
+     private void loadTable(){
+        
+        DefaultTableModel model = (DefaultTableModel) menuTBL.getModel();
+        model.setNumRows(0);
+        
+        menuTBL.getColumnModel().getColumn(0).setPreferredWidth(2);
+        menuTBL.getColumnModel().getColumn(1).setPreferredWidth(96);
+        menuTBL.getColumnModel().getColumn(2).setPreferredWidth(2);
+        
+//        MenuDao dao = new MenuDao();
+//        for(Menu item: dao.List()){
+//            model.addRow(new Object[]{
+//                item.getId(),
+//                item.getName,
+//                item.getPrice               
+//            });
+//        }
+        
+    }
+    private void addItem(){
+        String[] foodType = {
+            "Todos",
+            "Veganos",
+            "Bebidas",
+            "Picantes",
+            "Do chef"};
+        for(String type: foodType){
+            modelCBOX.addElement(type);
+        } 
+    }
+  
     /**
      * @param args the command line arguments
      */
@@ -101,26 +262,32 @@ public class menu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new menu().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Menu().setVisible(true);
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cashbackTXT;
+    private javax.swing.JComboBox<String> foodTypeCBOX;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton menuBackBTN;
+    private javax.swing.JTable menuTBL;
+    private javax.swing.JLabel valueCashbackTXT;
     // End of variables declaration//GEN-END:variables
-}
+

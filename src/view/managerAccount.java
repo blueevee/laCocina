@@ -5,19 +5,33 @@
  */
 package view;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.MenuElement;
+import javax.swing.plaf.basic.BasicMenuBarUI;
 import javax.swing.table.DefaultTableModel;
+import static view.CustomizeMenuBar.CustomizeMenuBar;
 
 /**
  *
  * @author Blueevee
  */
-public class managerAccount extends javax.swing.JFrame {
+public class ManagerAccount extends javax.swing.JFrame {
 
     /**
      * Creates new form managerAcount
      */
-    public managerAccount() {
+    public ManagerAccount() {
         initComponents();
+        this.getContentPane().setBackground(Color.decode("14027569"));
+        CustomizeMenuBar(managerMENU, Color.decode("14027569"), Color.white );
         loadTable();
     }
 
@@ -33,13 +47,17 @@ public class managerAccount extends javax.swing.JFrame {
         managerBackBTN = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         productsTBL = new javax.swing.JTable();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        managerMENU = new javax.swing.JMenuBar();
         registerItensMENU = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        employeeMENU = new javax.swing.JMenu();
+        editProfileMENU = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("La Cocina");
+        setTitle("Gerência La Cocina Bistrô");
 
+        managerBackBTN.setBackground(new java.awt.Color(38, 70, 27));
         managerBackBTN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/back16.png"))); // NOI18N
         managerBackBTN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -65,31 +83,67 @@ public class managerAccount extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(productsTBL);
         if (productsTBL.getColumnModel().getColumnCount() > 0) {
-            productsTBL.getColumnModel().getColumn(0).setHeaderValue("CÓDIGO");
-            productsTBL.getColumnModel().getColumn(1).setHeaderValue("ITEM");
-            productsTBL.getColumnModel().getColumn(2).setHeaderValue("PREÇO");
-            productsTBL.getColumnModel().getColumn(3).setHeaderValue("TIPO");
-            productsTBL.getColumnModel().getColumn(4).setHeaderValue("FORNECEDOR");
-            productsTBL.getColumnModel().getColumn(5).setHeaderValue("DESCRIÇÃO");
+            productsTBL.getColumnModel().getColumn(0).setPreferredWidth(2);
+            productsTBL.getColumnModel().getColumn(1).setPreferredWidth(80);
+            productsTBL.getColumnModel().getColumn(2).setPreferredWidth(2);
+            productsTBL.getColumnModel().getColumn(3).setPreferredWidth(10);
+            productsTBL.getColumnModel().getColumn(4).setPreferredWidth(20);
+            productsTBL.getColumnModel().getColumn(5).setPreferredWidth(60);
         }
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo.png"))); // NOI18N
+
+        jButton1.setBackground(new java.awt.Color(38, 70, 27));
+        jButton1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Salvar");
+
+        registerItensMENU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/food16.png"))); // NOI18N
         registerItensMENU.setText("Cadastrar itens");
         registerItensMENU.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerItensMENUMouseClicked(evt);
             }
-        });
-        jMenuBar1.add(registerItensMENU);
-
-        jMenu1.setText("Funcionários");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registerItensMENUMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registerItensMENUMouseExited(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        managerMENU.add(registerItensMENU);
 
-        setJMenuBar(jMenuBar1);
+        employeeMENU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/func16.png"))); // NOI18N
+        employeeMENU.setText("Funcionários");
+        employeeMENU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                employeeMENUMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                employeeMENUMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                employeeMENUMouseExited(evt);
+            }
+        });
+        managerMENU.add(employeeMENU);
+
+        editProfileMENU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/profileEdit16.png"))); // NOI18N
+        editProfileMENU.setText("Perfil");
+        editProfileMENU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editProfileMENUMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editProfileMENUMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editProfileMENUMouseExited(evt);
+            }
+        });
+        managerMENU.add(editProfileMENU);
+
+        setJMenuBar(managerMENU);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,20 +152,34 @@ public class managerAccount extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(managerBackBTN)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE))
-                .addGap(35, 35, 35))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(managerBackBTN)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(managerBackBTN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(29, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,21 +188,57 @@ public class managerAccount extends javax.swing.JFrame {
 
     private void managerBackBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_managerBackBTNMouseClicked
         this.dispose();
-        login loginScreen = new login();
+        Login loginScreen = new Login();
         loginScreen.setVisible(true);
     }//GEN-LAST:event_managerBackBTNMouseClicked
 
     private void registerItensMENUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerItensMENUMouseClicked
        this.dispose();
-       registerProducts registerProductsScreen = new registerProducts();
+       RegisterProducts registerProductsScreen = new RegisterProducts();
        registerProductsScreen.setVisible(true); 
     }//GEN-LAST:event_registerItensMENUMouseClicked
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void employeeMENUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeMENUMouseClicked
        this.dispose();
-       manageEmployees manageEmployeesScreen = new manageEmployees();
+       ManageEmployees manageEmployeesScreen = new ManageEmployees();
        manageEmployeesScreen.setVisible(true); 
-    }//GEN-LAST:event_jMenu1MouseClicked
+    }//GEN-LAST:event_employeeMENUMouseClicked
+
+    private void registerItensMENUMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerItensMENUMouseEntered
+        registerItensMENU.setForeground(Color.decode("6554655"));                                                                              
+        registerItensMENU.setIcon(new ImageIcon("C:\\Users\\evelyn.ferreira\\Desktop\\laCocina-master\\src\\assets\\hoverFood16.png"));
+    }//GEN-LAST:event_registerItensMENUMouseEntered
+
+    private void registerItensMENUMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerItensMENUMouseExited
+        registerItensMENU.setForeground(Color.white);                                                                              
+        registerItensMENU.setIcon(new ImageIcon("C:\\Users\\evelyn.ferreira\\Desktop\\laCocina-master\\src\\assets\\food16.png"));
+    }//GEN-LAST:event_registerItensMENUMouseExited
+
+    private void employeeMENUMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeMENUMouseEntered
+        employeeMENU.setForeground(Color.decode("6554655"));                                                                              
+        employeeMENU.setIcon(new ImageIcon("C:\\Users\\evelyn.ferreira\\Desktop\\laCocina-master\\src\\assets\\hoverFunc16.png"));
+    }//GEN-LAST:event_employeeMENUMouseEntered
+
+    private void employeeMENUMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeeMENUMouseExited
+        employeeMENU.setForeground(Color.white);
+        employeeMENU.setIcon(new ImageIcon("C:\\Users\\evelyn.ferreira\\Desktop\\laCocina-master\\src\\assets\\func16.png"));
+    }//GEN-LAST:event_employeeMENUMouseExited
+
+    private void editProfileMENUMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileMENUMouseEntered
+        editProfileMENU.setForeground(Color.decode("6554655"));                                                                              
+        editProfileMENU.setIcon(new ImageIcon("C:\\Users\\evelyn.ferreira\\Desktop\\laCocina-master\\src\\assets\\hoverProfileEdit.png"));
+    }//GEN-LAST:event_editProfileMENUMouseEntered
+
+    private void editProfileMENUMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileMENUMouseExited
+        editProfileMENU.setForeground(Color.white);
+        editProfileMENU.setIcon(new ImageIcon("C:\\Users\\evelyn.ferreira\\Desktop\\laCocina-master\\src\\assets\\profileEdit16.png"));
+    }//GEN-LAST:event_editProfileMENUMouseExited
+
+    private void editProfileMENUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfileMENUMouseClicked
+        this.dispose();
+        EditProfile editProfileScreen = new EditProfile();
+        editProfileScreen.setVisible(true);
+    }//GEN-LAST:event_editProfileMENUMouseClicked
     private void loadTable(){
         
         DefaultTableModel model = (DefaultTableModel) productsTBL.getModel();
@@ -172,23 +276,27 @@ public class managerAccount extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(managerAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
         
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new managerAccount().setVisible(true);
+            new ManagerAccount().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu editProfileMENU;
+    private javax.swing.JMenu employeeMENU;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton managerBackBTN;
+    private javax.swing.JMenuBar managerMENU;
     private javax.swing.JTable productsTBL;
     private javax.swing.JMenu registerItensMENU;
     // End of variables declaration//GEN-END:variables
